@@ -1,16 +1,27 @@
 # Managing Database Transactions
-In this guide, you will learn about managing database transactions using Ballerina.
+
+A database transaction essentially symbolizes a unit of work that is done against a database.
+
+> In this guide, you will learn how to manage database transactions using Ballerina.
+
+The following are the sections available in this guide.
+
+- [What you'll build](#what-you-build)
+- [Prerequisites](#pre-req)
+- [Developing the service](#developing-service)
+- [Testing](#testing)
+- [Deployment](#deploying-the-scenario)
+- [Observability](#observability)
 
 ## <a name="what-you-build"></a> What you’ll build 
-To understanding how you can manage database transactions using Ballerina, let’s consider a real-world use case of a simple banking application. In this example, you will build a simple banking application, which will allow users to,
+To understanding how you can manage database transactions using Ballerina, let’s consider a real-world use case of a simple banking application. In this example, you will build a simple banking application, which will allow users to:
 
-- **Create accounts** : Create a new account by providing username
-- **Verify accounts** : Verify the existence of an account by providing the account Id
-- **Check balance** : Check account balance
-- **Deposit money** : Deposit money into an account
-- **Withdraw money** : Withdraw money from an account
-- **Transfer money** : Transfer money from one account to another account
-
+- **Create accounts**: Create a new account by providing username
+- **Verify accounts**: Verify the existence of an account by providing the account Id
+- **Check balance**: Check account balance
+- **Deposit money**: Deposit money into an account
+- **Withdraw money**: Withdraw money from an account
+- **Transfer money**: Transfer money from one account to another account
 
 Transferring money from one account to another account involves both operations withdrawal from the transferor and deposit to the transferee. Hence transferring operation required to be done using a transaction block. A transaction ensures the 'ACID' properties, which database transactions intended to guarantee validity even in the event of errors, power failures, etc.
 
