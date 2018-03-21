@@ -1,6 +1,6 @@
 # Managing Database Transactions
 
-A database transaction essentially symbolizes a unit of work that is done against a database.
+A database transaction essentially symbolizes a unit of work that is done against a database. Each logical unit of work must exhibit four properties, called the atomicity, consistency, isolation, and durability (ACID) properties, to qualify as a transaction.
 
 > In this guide, you will learn how to manage database transactions using Ballerina.
 
@@ -14,18 +14,18 @@ The following are the sections available in this guide.
 - [Observability](#observability)
 
 ## <a name="what-you-build"></a> What you’ll build 
-To understanding how you can manage database transactions using Ballerina, let’s consider a real-world use case of a simple banking application. In this example, you will build a simple banking application, which will allow users to:
+To understand how you can manage database transactions using Ballerina, let’s consider a real-world use case of a simple banking application. In this example, you will build a simple banking application that allows users to:
 
-- **Create accounts**: Create a new account by providing username
+- **Create accounts**: Create a new account by providing a username
 - **Verify accounts**: Verify the existence of an account by providing the account Id
 - **Check balance**: Check account balance
 - **Deposit money**: Deposit money into an account
 - **Withdraw money**: Withdraw money from an account
 - **Transfer money**: Transfer money from one account to another account
 
-Transferring money from one account to another account involves both operations withdrawal from the transferor and deposit to the transferee. Hence transferring operation required to be done using a transaction block. A transaction ensures the 'ACID' properties, which database transactions intended to guarantee validity even in the event of errors, power failures, etc.
+Transferring money from one account to another account involves two operations: withdrawal from the account of the person transfering the mmoney and a deposit made to the account of the person receiving the money. A transaction block is used for this money transfer operation. A transaction ensures the 'ACID' properties, which database transactions intended to guarantee validity even in the event of errors, power failures, etc.
 
-When transferring money assume the transaction fails during the deposit operation. Now the withdrawal operation carried out prior to deposit operation also needs to be rolled back. Otherwise, we will end up in a state where transferor loses money. Therefore, to ensure the atomicity (all or nothing property), we need to perform the money transfer operation as a transaction. 
+When transferring money, assume the transaction fails during the deposit operation. Now the withdrawal operation carried out prior to deposit operation also needs to be rolled back. Otherwise, we will end up in a state where transferor loses money. Therefore, to ensure the atomicity (all or nothing property), we need to perform the money transfer operation as a transaction. 
 
 This example explains three different scenarios where one user tries to transfer money from his/her account to another user's account. The first scenario shows a successful transaction whereas the other two fail due to different reasons. You can observe how Ballerina transactions ensure the 'ACID' properties through this example.
 
